@@ -9,13 +9,27 @@
 <body>
 
   <div class="container">
-    <h1>Quote Generator</h1>
+    <h1>✨ Quote Generator</h1>
 
-    <div id="quote-box">
-      <p id="quote">Click the button to get a quote</p>
+    <div class="quote-box fade" id="quoteBox">
+      <div class="quote" id="quote">
+        "The best way to get started is to quit talking and begin doing."
+      </div>
+
+      <div class="author" id="author">
+        - Walt Disney
+      </div>
     </div>
 
-    <button id="new-quote">New Quote</button>
+    <div class="buttons">
+      <button id="new-quote">🎲 New Quote</button>
+      <button id="copy-quote">📋 Copy</button>
+      <button id="dark-mode">🌙 Dark Mode</button>
+    </div>
+
+    <div class="counter">
+      Quotes Generated: <span id="count">0</span>
+    </div>
   </div>
 
   <script src="assets/js/script.js"></script>
