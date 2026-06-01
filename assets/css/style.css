@@ -2,50 +2,52 @@
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family: Arial, sans-serif;
+  font-family:Arial,sans-serif;
 }
 
 body{
-  height:100vh;
+  min-height:100vh;
   display:flex;
   justify-content:center;
   align-items:center;
-  background: linear-gradient(135deg,#667eea,#764ba2);
+  background:linear-gradient(135deg,#667eea,#764ba2);
   padding:20px;
-  transition:0.3s;
+  transition:.3s;
 }
 
 .container{
-  width:500px;
-  background:#fff;
+  width:600px;
+  max-width:100%;
+  background:white;
   padding:30px;
   border-radius:15px;
   text-align:center;
-  box-shadow:0 10px 25px rgba(0,0,0,0.2);
-  transition:0.3s;
+  box-shadow:0 10px 25px rgba(0,0,0,.2);
 }
 
 h1{
   margin-bottom:20px;
-  color:#333;
 }
 
-.quote-box{
-  margin:20px 0;
+select{
+  width:100%;
+  padding:12px;
+  margin-bottom:20px;
+  border-radius:8px;
+  border:1px solid #ddd;
 }
 
 .quote{
   font-size:24px;
-  color:#444;
-  margin-bottom:15px;
-  min-height:90px;
   line-height:1.5;
+  min-height:120px;
+  margin-bottom:15px;
 }
 
 .author{
   font-size:18px;
-  color:#777;
   margin-bottom:25px;
+  color:#666;
 }
 
 .buttons{
@@ -59,20 +61,36 @@ button{
   padding:12px 18px;
   border:none;
   background:#667eea;
-  color:#fff;
-  font-size:15px;
+  color:white;
   border-radius:8px;
   cursor:pointer;
-  transition:0.3s;
+  transition:.3s;
 }
 
 button:hover{
-  background:#5a67d8;
   transform:scale(1.05);
 }
 
+.counter{
+  margin-top:20px;
+}
+
+.stats{
+  margin-top:30px;
+  padding-top:20px;
+  border-top:1px solid #ddd;
+}
+
+.stats h3{
+  margin-bottom:15px;
+}
+
+.stats p{
+  margin:10px 0;
+}
+
 .fade{
-  animation:fadeIn 0.5s ease;
+  animation:fadeIn .5s ease;
 }
 
 @keyframes fadeIn{
@@ -86,14 +104,8 @@ button:hover{
   }
 }
 
-.counter{
-  margin-top:20px;
-  color:#555;
-  font-size:14px;
-}
-
 .dark-mode{
-  background:black;
+  background:#000;
 }
 
 .dark-mode .container{
@@ -101,9 +113,8 @@ button:hover{
   color:white;
 }
 
-.dark-mode .quote,
 .dark-mode .author,
-.dark-mode h1,
+.dark-mode .stats,
 .dark-mode .counter{
   color:white;
 }
