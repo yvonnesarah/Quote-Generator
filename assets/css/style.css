@@ -118,3 +118,50 @@ button:hover{
 .dark-mode .counter{
   color:white;
 }
+
+.daily-widget{
+  background:#f5f7ff;
+  padding:15px;
+  border-radius:10px;
+  margin-bottom:20px;
+}
+
+.daily-widget h3{
+  margin-bottom:10px;
+}
+
+.achievement{
+  margin-top:20px;
+  font-weight:bold;
+  font-size:18px;
+  color:#28a745;
+}
+
+.history{
+  margin-top:30px;
+  text-align:left;
+}
+
+.history h3{
+  margin-bottom:15px;
+}
+
+.history p{
+  padding:8px 0;
+  border-bottom:1px solid #eee;
+  font-size:14px;
+}
+
+.dark-mode .daily-widget{
+  background:#333;
+}
+
+.dark-mode .history p{
+  border-color:#444;
+}
+
+.dark-mode select{
+  background:#333;
+  color:white;
+  border-color:#444;
+}
