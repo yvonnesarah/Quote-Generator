@@ -92,6 +92,15 @@ const quotes = [
 ];
 
 let count = 0;
+let lastQuote = null;
+
+const gradients = [
+  "linear-gradient(135deg,#667eea,#764ba2)",
+  "linear-gradient(135deg,#ff9966,#ff5e62)",
+  "linear-gradient(135deg,#00c9ff,#92fe9d)",
+  "linear-gradient(135deg,#f093fb,#f5576c)",
+  "linear-gradient(135deg,#4facfe,#00f2fe)"
+];
 
 const quoteElement = document.getElementById("quote");
 const authorElement = document.getElementById("author");
@@ -125,8 +134,15 @@ document
   .getElementById("dark-mode")
   .addEventListener("click", toggleDarkMode);
 
-generateQuote();
+loadQuoteOfDay();
+displayHistory();
 loadStats();
+
+if(localStorage.getItem("darkMode") === "true"){
+  document.body.classList.add("dark-mode");
+}
+
+generateQuote();
 
 function generateQuote() {
 
@@ -140,24 +156,52 @@ function generateQuote() {
           quote => quote.category === selected
         );
 
-  const random =
-    filteredQuotes[
+  let random;
+
+  do{
+
+    random =
+      filteredQuotes[
+        Math.floor(
+          Math.random() * filteredQuotes.length
+        )
+      ];
+
+  }while(
+    random === lastQuote &&
+    filteredQuotes.length > 1
+  );
+
+  lastQuote = random;
+
+  quoteElement.innerText =
+    `"${random.quote}"`;
+
+  authorElement.innerText =
+    `- ${random.author}`;
+
+  quoteBox.classList.remove("fade");
+
+  void quoteBox.offsetWidth;
+
+  quoteBox.classList.add("fade");
+
+  document.body.style.background =
+    gradients[
       Math.floor(
-        Math.random() * filteredQuotes.length
+        Math.random() * gradients.length
       )
     ];
 
-  quoteElement.innerText = `"${random.quote}"`;
-  authorElement.innerText = `- ${random.author}`;
-
-  quoteBox.classList.remove("fade");
-  void quoteBox.offsetWidth;
-  quoteBox.classList.add("fade");
+  saveHistory(random);
 
   count++;
+
   countElement.innerText = count;
 
   updateStats(random.category);
+
+  checkAchievements();
 }
 
 function copyQuote() {
@@ -171,7 +215,24 @@ function copyQuote() {
 function saveFavorite() {
 
   const favorites =
-    JSON.parse(localStorage.getItem("favorites")) || [];
+    JSON.parse(
+      localStorage.getItem("favorites")
+    ) || [];
+
+  const exists =
+    favorites.some(
+      fav =>
+        fav.quote === quoteElement.innerText
+    );
+
+  if(exists){
+
+    alert(
+      "Already in favourites!"
+    );
+
+    return;
+  }
 
   favorites.push({
     quote: quoteElement.innerText,
@@ -185,7 +246,9 @@ function saveFavorite() {
 
   loadStats();
 
-  alert("Added to favourites!");
+  alert(
+    "Added to favourites!"
+  );
 }
 
 function readQuote() {
@@ -199,7 +262,105 @@ function readQuote() {
 }
 
 function toggleDarkMode() {
-  document.body.classList.toggle("dark-mode");
+
+  document.body.classList.toggle(
+    "dark-mode"
+  );
+
+  localStorage.setItem(
+    "darkMode",
+    document.body.classList.contains(
+      "dark-mode"
+    )
+  );
+}
+
+function loadQuoteOfDay() {
+
+  const day =
+    new Date().getDate();
+
+  const quote =
+    quotes[
+      day % quotes.length
+    ];
+
+  document.getElementById(
+    "dailyQuote"
+  ).innerText =
+    `"${quote.quote}" — ${quote.author}`;
+}
+
+function saveHistory(quote) {
+
+  let history =
+    JSON.parse(
+      localStorage.getItem("history")
+    ) || [];
+
+  history.unshift(quote);
+
+  history = history.slice(0,10);
+
+  localStorage.setItem(
+    "history",
+    JSON.stringify(history)
+  );
+
+  displayHistory();
+}
+
+function displayHistory() {
+
+  const history =
+    JSON.parse(
+      localStorage.getItem("history")
+    ) || [];
+
+  const historyList =
+    document.getElementById(
+      "historyList"
+    );
+
+  historyList.innerHTML =
+    history
+      .map(
+        item =>
+        `<p>"${item.quote}" - ${item.author}</p>`
+      )
+      .join("");
+}
+
+function checkAchievements() {
+
+  const achievement =
+    document.getElementById(
+      "achievementText"
+    );
+
+  if(count >= 100){
+
+    achievement.innerText =
+      "👑 Quote Master";
+  }
+
+  else if(count >= 50){
+
+    achievement.innerText =
+      "🥇 Achievement: 50 Quotes Viewed";
+  }
+
+  else if(count >= 25){
+
+    achievement.innerText =
+      "🥈 Achievement: 25 Quotes Viewed";
+  }
+
+  else if(count >= 10){
+
+    achievement.innerText =
+      "🏅 Achievement: 10 Quotes Viewed";
+  }
 }
 
 function updateStats(category) {
