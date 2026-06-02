@@ -12,11 +12,17 @@
 
   <h1>✨ Quote Generator</h1>
 
+<div class="daily-widget">
+  <h3>🌟 Quote of the Day</h3>
+  <p id="dailyQuote"></p>
+</div>
+
   <select id="category">
-    <option value="Motivation">Motivation</option>
-    <option value="Success">Success</option>
-    <option value="Life">Life</option>
-  </select>
+  <option value="all">All Categories</option>
+  <option value="Motivation">Motivation</option>
+  <option value="Success">Success</option>
+  <option value="Life">Life</option>
+</select>
 
   <div class="quote-box fade" id="quoteBox">
     <div class="quote" id="quote"></div>
@@ -54,6 +60,15 @@
       <span id="mostViewed">None</span>
     </p>
   </div>
+
+  <div class="achievement">
+  <span id="achievementText"></span>
+</div>
+
+<div class="history">
+  <h3>📜 Quote History</h3>
+  <div id="historyList"></div>
+</div>
 
 </div>
 
