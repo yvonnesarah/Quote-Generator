@@ -140,6 +140,7 @@ document.getElementById("category")
 loadQuoteOfDay();
 displayHistory();
 loadStats();
+loadFavorites();
 
 if(localStorage.getItem("darkMode") === "true"){
   document.body.classList.add("dark-mode");
@@ -202,7 +203,27 @@ function copyQuote(){
     ${authorElement.innerText}`
   );
 
-  alert("Quote copied!");
+  showToast("Quote copied!");
+}
+
+function showToast(message){
+
+  const toast =
+    document.createElement("div");
+
+  toast.className =
+    "toast";
+
+  toast.innerText =
+    message;
+
+  document.body.appendChild(
+    toast
+  );
+
+  setTimeout(() => {
+    toast.remove();
+  }, 2000);
 }
 
 function saveFavorite(){
@@ -212,10 +233,27 @@ function saveFavorite(){
       localStorage.getItem("favorites")
     ) || [];
 
-  favorites.push({
-    quote:quoteElement.innerText,
-    author:authorElement.innerText
-  });
+  const currentQuote = {
+    quote: quoteElement.innerText,
+    author: authorElement.innerText
+  };
+
+  const exists =
+    favorites.some(
+      q =>
+      q.quote === currentQuote.quote
+    );
+
+  if(exists){
+
+    alert(
+      "Already in favourites!"
+    );
+
+    return;
+  }
+
+  favorites.push(currentQuote);
 
   localStorage.setItem(
     "favorites",
@@ -223,8 +261,33 @@ function saveFavorite(){
   );
 
   loadStats();
+  loadFavorites();
 
-  alert("Added to favourites!");
+  alert(
+    "Added to favourites!"
+  );
+}
+
+function loadFavorites(){
+
+  const favorites =
+    JSON.parse(
+      localStorage.getItem("favorites")
+    ) || [];
+
+  document
+    .getElementById("favoriteList")
+    .innerHTML =
+      favorites.length
+        ? favorites.map(
+            q => `
+            <p>
+              ${q.quote}
+              ${q.author}
+            </p>
+          `
+          ).join("")
+        : "<p>No favourites yet.</p>";
 }
 
 function readQuote(){
