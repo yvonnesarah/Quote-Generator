@@ -112,27 +112,30 @@ const favoriteCount = document.getElementById("favoriteCount");
 const mostViewed = document.getElementById("mostViewed");
 
 const categoryStats =
-  JSON.parse(localStorage.getItem("categoryStats")) || {};
+JSON.parse(
+  localStorage.getItem("categoryStats")
+) || {};
 
-document
-  .getElementById("new-quote")
-  .addEventListener("click", generateQuote);
+document.getElementById("new-quote")
+.addEventListener("click", generateQuote);
 
-document
-  .getElementById("copy-quote")
-  .addEventListener("click", copyQuote);
+document.getElementById("copy-quote")
+.addEventListener("click", copyQuote);
 
-document
-  .getElementById("favorite-quote")
-  .addEventListener("click", saveFavorite);
+document.getElementById("favorite-quote")
+.addEventListener("click", saveFavorite);
 
-document
-  .getElementById("voice-quote")
-  .addEventListener("click", readQuote);
+document.getElementById("voice-quote")
+.addEventListener("click", readQuote);
 
-document
-  .getElementById("dark-mode")
-  .addEventListener("click", toggleDarkMode);
+document.getElementById("dark-mode")
+.addEventListener("click", toggleDarkMode);
+
+document.getElementById("background-btn")
+.addEventListener("click", randomBackground);
+
+document.getElementById("category")
+.addEventListener("change", generateQuote);
 
 loadQuoteOfDay();
 displayHistory();
@@ -144,7 +147,7 @@ if(localStorage.getItem("darkMode") === "true"){
 
 generateQuote();
 
-function generateQuote() {
+function generateQuote(){
 
   const selected =
     document.getElementById("category").value;
@@ -153,21 +156,20 @@ function generateQuote() {
     selected === "all"
       ? quotes
       : quotes.filter(
-          quote => quote.category === selected
+          q => q.category === selected
         );
 
   let random;
 
   do{
-
     random =
       filteredQuotes[
         Math.floor(
-          Math.random() * filteredQuotes.length
+          Math.random()*filteredQuotes.length
         )
       ];
-
-  }while(
+  }
+  while(
     random === lastQuote &&
     filteredQuotes.length > 1
   );
@@ -181,62 +183,38 @@ function generateQuote() {
     `- ${random.author}`;
 
   quoteBox.classList.remove("fade");
-
   void quoteBox.offsetWidth;
-
   quoteBox.classList.add("fade");
-
-  document.body.style.background =
-    gradients[
-      Math.floor(
-        Math.random() * gradients.length
-      )
-    ];
 
   saveHistory(random);
 
   count++;
-
   countElement.innerText = count;
 
   updateStats(random.category);
-
   checkAchievements();
 }
 
-function copyQuote() {
+function copyQuote(){
+
   navigator.clipboard.writeText(
-    `${quoteElement.innerText} ${authorElement.innerText}`
+    `${quoteElement.innerText}
+    ${authorElement.innerText}`
   );
 
   alert("Quote copied!");
 }
 
-function saveFavorite() {
+function saveFavorite(){
 
   const favorites =
     JSON.parse(
       localStorage.getItem("favorites")
     ) || [];
 
-  const exists =
-    favorites.some(
-      fav =>
-        fav.quote === quoteElement.innerText
-    );
-
-  if(exists){
-
-    alert(
-      "Already in favourites!"
-    );
-
-    return;
-  }
-
   favorites.push({
-    quote: quoteElement.innerText,
-    author: authorElement.innerText
+    quote:quoteElement.innerText,
+    author:authorElement.innerText
   });
 
   localStorage.setItem(
@@ -246,22 +224,21 @@ function saveFavorite() {
 
   loadStats();
 
-  alert(
-    "Added to favourites!"
-  );
+  alert("Added to favourites!");
 }
 
-function readQuote() {
+function readQuote(){
 
   const speech =
     new SpeechSynthesisUtterance(
-      `${quoteElement.innerText} ${authorElement.innerText}`
+      `${quoteElement.innerText}
+      ${authorElement.innerText}`
     );
 
   speechSynthesis.speak(speech);
 }
 
-function toggleDarkMode() {
+function toggleDarkMode(){
 
   document.body.classList.toggle(
     "dark-mode"
@@ -275,7 +252,17 @@ function toggleDarkMode() {
   );
 }
 
-function loadQuoteOfDay() {
+function randomBackground(){
+
+  document.body.style.background =
+    gradients[
+      Math.floor(
+        Math.random()*gradients.length
+      )
+    ];
+}
+
+function loadQuoteOfDay(){
 
   const day =
     new Date().getDate();
@@ -291,7 +278,7 @@ function loadQuoteOfDay() {
     `"${quote.quote}" — ${quote.author}`;
 }
 
-function saveHistory(quote) {
+function saveHistory(quote){
 
   let history =
     JSON.parse(
@@ -310,67 +297,59 @@ function saveHistory(quote) {
   displayHistory();
 }
 
-function displayHistory() {
+function displayHistory(){
 
   const history =
     JSON.parse(
       localStorage.getItem("history")
     ) || [];
 
-  const historyList =
-    document.getElementById(
-      "historyList"
-    );
-
-  historyList.innerHTML =
-    history
-      .map(
-        item =>
-        `<p>"${item.quote}" - ${item.author}</p>`
-      )
-      .join("");
+  document.getElementById(
+    "historyList"
+  ).innerHTML =
+    history.map(
+      item =>
+      `<p>"${item.quote}" - ${item.author}</p>`
+    ).join("");
 }
 
-function checkAchievements() {
+function checkAchievements(){
 
   const achievement =
     document.getElementById(
       "achievementText"
     );
 
-  if(count >= 100){
-
+  if(count >= 100)
     achievement.innerText =
       "👑 Quote Master";
-  }
 
-  else if(count >= 50){
-
+  else if(count >= 50)
     achievement.innerText =
       "🥇 Achievement: 50 Quotes Viewed";
-  }
 
-  else if(count >= 25){
-
+  else if(count >= 25)
     achievement.innerText =
       "🥈 Achievement: 25 Quotes Viewed";
-  }
 
-  else if(count >= 10){
-
+  else if(count >= 10)
     achievement.innerText =
       "🏅 Achievement: 10 Quotes Viewed";
-  }
 }
 
-function updateStats(category) {
+function updateStats(category){
 
   let views =
-    Number(localStorage.getItem("views")) || 0;
+    Number(
+      localStorage.getItem("views")
+    ) || 0;
 
   views++;
 
-  localStorage.setItem("views", views);
+  localStorage.setItem(
+    "views",
+    views
+  );
 
   categoryStats[category] =
     (categoryStats[category] || 0) + 1;
@@ -383,13 +362,15 @@ function updateStats(category) {
   loadStats();
 }
 
-function loadStats() {
+function loadStats(){
 
   totalViewed.innerText =
     localStorage.getItem("views") || 0;
 
   const favorites =
-    JSON.parse(localStorage.getItem("favorites")) || [];
+    JSON.parse(
+      localStorage.getItem("favorites")
+    ) || [];
 
   favoriteCount.innerText =
     favorites.length;
@@ -402,7 +383,6 @@ function loadStats() {
     if(categoryStats[category] > highest){
 
       highest = categoryStats[category];
-
       mostViewedCategory = category;
     }
   }
