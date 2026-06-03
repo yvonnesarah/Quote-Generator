@@ -30,10 +30,31 @@ h1{
 }
 
 .daily-widget{
-  background:#f5f7ff;
-  padding:15px;
-  border-radius:10px;
-  margin-bottom:20px;
+  background: #f5f7ff;
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+}
+
+.daily-widget h3{
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+#dailyQuote{
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+}
+
+.daily-widget{
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.dark-mode .daily-widget{
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
 }
 
 select{
@@ -166,6 +187,19 @@ progress{
 .dark-mode .container{
   background:#222;
   color:white;
+}
+
+.dark-mode .daily-widget{
+  background: #2b2b2b;
+  border: 1px solid #444;
+}
+
+.dark-mode #dailyQuote{
+  color: #eaeaea;
+}
+
+.dark-mode .daily-widget h3{
+  color: #ffffff;
 }
 
 .dark-mode .history p,
