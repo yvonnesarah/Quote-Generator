@@ -12,17 +12,17 @@
 
   <h1>✨ Quote Generator</h1>
 
-<div class="daily-widget">
-  <h3>🌟 Quote of the Day</h3>
-  <p id="dailyQuote"></p>
-</div>
+  <div class="daily-widget">
+    <h3>🌟 Quote of the Day</h3>
+    <p id="dailyQuote"></p>
+  </div>
 
   <select id="category">
-  <option value="all">All Categories</option>
-  <option value="Motivation">Motivation</option>
-  <option value="Success">Success</option>
-  <option value="Life">Life</option>
-</select>
+    <option value="all">All Categories</option>
+    <option value="Motivation">Motivation</option>
+    <option value="Success">Success</option>
+    <option value="Life">Life</option>
+  </select>
 
   <div class="quote-box fade" id="quoteBox">
     <div class="quote" id="quote"></div>
@@ -34,6 +34,7 @@
     <button id="copy-quote">📋 Copy</button>
     <button id="favorite-quote">❤️ Favourite</button>
     <button id="voice-quote">🔊 Read</button>
+    <button id="background-btn">🎨 Background</button>
     <button id="dark-mode">🌙 Dark Mode</button>
   </div>
 
@@ -45,30 +46,27 @@
   <div class="stats">
     <h3>📊 Statistics</h3>
 
-    <p>
-      Total Quotes Viewed:
+    <p>Total Quotes Viewed:
       <span id="totalViewed">0</span>
     </p>
 
-    <p>
-      Favourite Quotes:
+    <p>Favourite Quotes:
       <span id="favoriteCount">0</span>
     </p>
 
-    <p>
-      Most Viewed Category:
+    <p>Most Viewed Category:
       <span id="mostViewed">None</span>
     </p>
   </div>
 
   <div class="achievement">
-  <span id="achievementText"></span>
-</div>
+    <span id="achievementText"></span>
+  </div>
 
-<div class="history">
-  <h3>📜 Quote History</h3>
-  <div id="historyList"></div>
-</div>
+  <div class="history">
+    <h3>📜 Quote History</h3>
+    <div id="historyList"></div>
+  </div>
 
 </div>
 
@@ -76,3 +74,4 @@
 
 </body>
 </html>
+
