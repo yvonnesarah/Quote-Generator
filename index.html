@@ -29,6 +29,16 @@
     <div class="author" id="author"></div>
   </div>
 
+  <div class="rating">
+    <h3>⭐ Rate This Quote</h3>
+    <button onclick="rateQuote(1)">⭐</button>
+    <button onclick="rateQuote(2)">⭐⭐</button>
+    <button onclick="rateQuote(3)">⭐⭐⭐</button>
+    <button onclick="rateQuote(4)">⭐⭐⭐⭐</button>
+    <button onclick="rateQuote(5)">⭐⭐⭐⭐⭐</button>
+    <p id="ratingDisplay"></p>
+  </div>
+
   <div class="buttons">
     <button id="new-quote">🎲 New Quote</button>
     <button id="copy-quote">📋 Copy</button>
@@ -36,6 +46,8 @@
     <button id="voice-quote">🔊 Read</button>
     <button id="background-btn">🎨 Background</button>
     <button id="dark-mode">🌙 Dark Mode</button>
+    <button id="clear-history">🗑 Clear History</button>
+    <button id="clear-favorites">🧹 Clear Favourites</button>
   </div>
 
   <div class="counter">
@@ -59,6 +71,12 @@
     </p>
   </div>
 
+  <div class="progress-section">
+    <h3>🏆 Progress</h3>
+    <progress id="quoteProgress" max="100" value="0"></progress>
+    <p id="progressText">0 / 100 Quotes</p>
+  </div>
+
   <div class="achievement">
     <span id="achievementText"></span>
   </div>
@@ -69,9 +87,9 @@
   </div>
 
   <div class="favorites">
-  <h3>❤️ Favourite Quotes</h3>
-  <div id="favoriteList"></div>
-</div>
+    <h3>❤️ Favourite Quotes</h3>
+    <div id="favoriteList"></div>
+  </div>
 
 </div>
 
@@ -79,4 +97,3 @@
 
 </body>
 </html>
-
