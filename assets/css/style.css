@@ -1,3 +1,4 @@
+/* Reset default browser styles and apply global font */
 *{
   margin:0;
   padding:0;
@@ -5,6 +6,7 @@
   font-family:Arial,sans-serif;
 }
 
+/* Center the app on the page with a gradient background */
 body{
   min-height:100vh;
   display:flex;
@@ -15,6 +17,7 @@ body{
   transition:.4s;
 }
 
+/* Main application container */
 .container{
   width:650px;
   max-width:100%;
@@ -25,38 +28,45 @@ body{
   box-shadow:0 10px 25px rgba(0,0,0,.2);
 }
 
+/* Main heading */
 h1{
   margin-bottom:20px;
 }
 
+/* Daily quote widget container */
 .daily-widget{
-  background: #f5f7ff;
-  padding: 15px;
-  border-radius: 12px;
-  margin-bottom: 20px;
-  border: 1px solid rgba(0,0,0,0.05);
-  transition: all 0.3s ease;
+  background:#f5f7ff;
+  padding:15px;
+  border-radius:12px;
+  margin-bottom:20px;
+  border:1px solid rgba(0,0,0,0.05);
+  transition:all 0.3s ease;
 }
 
+/* Daily widget title */
 .daily-widget h3{
-  margin-bottom: 10px;
-  font-size: 16px;
+  margin-bottom:10px;
+  font-size:16px;
 }
 
+/* Daily quote text */
 #dailyQuote{
-  font-size: 14px;
-  line-height: 1.5;
-  color: #333;
+  font-size:14px;
+  line-height:1.5;
+  color:#333;
 }
 
+/* Shadow effect for daily widget */
 .daily-widget{
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
 }
 
+/* Stronger shadow in dark mode */
 .dark-mode .daily-widget{
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  box-shadow:0 4px 12px rgba(0,0,0,0.4);
 }
 
+/* Category dropdown menu */
 select{
   width:100%;
   padding:12px;
@@ -66,6 +76,7 @@ select{
   margin-bottom:20px;
 }
 
+/* Quote display box */
 .quote-box{
   background:linear-gradient(135deg,#4facfe,#00f2fe);
   color:white;
@@ -79,17 +90,20 @@ select{
   text-align:center;
 }
 
+/* Quote text styling */
 .quote{
   font-size:30px;
   font-weight:700;
 }
 
+/* Author name styling */
 .author{
   margin-top:25px;
   font-size:20px;
   color:#fff;
 }
 
+/* Container for action buttons */
 .buttons{
   display:flex;
   flex-wrap:wrap;
@@ -98,6 +112,7 @@ select{
   margin-top:25px;
 }
 
+/* General button styles */
 button{
   padding:12px 18px;
   border:none;
@@ -108,33 +123,40 @@ button{
   transition:.3s;
 }
 
+/* Hover effect for buttons */
 button:hover{
   transform:scale(1.05);
 }
 
+/* Quote counter section */
 .counter{
   margin-top:20px;
 }
 
+/* Statistics section */
 .stats{
   margin-top:30px;
   border-top:1px solid #ddd;
   padding-top:20px;
 }
 
+/* Individual statistic lines */
 .stats p{
   margin:10px 0;
 }
 
+/* Progress tracking section */
 .progress-section{
   margin-top:30px;
 }
 
+/* Progress bar styling */
 progress{
   width:100%;
   height:25px;
 }
 
+/* Achievement message styling */
 .achievement{
   margin-top:20px;
   font-size:18px;
@@ -142,75 +164,97 @@ progress{
   color:#28a745;
 }
 
+/* Quote history section */
 .history{
   margin-top:30px;
   text-align:left;
 }
 
+/* Individual history entries */
 .history p{
   padding:8px 0;
   border-bottom:1px solid #eee;
   font-size:14px;
 }
 
+/* Favorites section */
 .favorites{
   margin-top:30px;
   text-align:left;
 }
 
+/* Individual favorite quote card */
 .favorite-card{
   padding:10px;
   border-bottom:1px solid #eee;
 }
 
+/* Rating section */
 .rating{
   margin-top:25px;
 }
 
+/* Rating buttons spacing */
 .rating button{
   margin:5px;
 }
 
+/* Fade-in animation class */
 .fade{
   animation:fadeIn .5s ease;
 }
 
+/* Animation for smooth appearance */
 @keyframes fadeIn{
-  from{opacity:0;transform:translateY(10px);}
-  to{opacity:1;transform:translateY(0);}
+  from{
+    opacity:0;
+    transform:translateY(10px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
+/* Dark mode page background */
 .dark-mode{
   background:#111;
 }
 
+/* Dark mode container styling */
 .dark-mode .container{
   background:#222;
   color:white;
 }
 
+/* Dark mode daily widget */
 .dark-mode .daily-widget{
-  background: #2b2b2b;
-  border: 1px solid #444;
+  background:#2b2b2b;
+  border:1px solid #444;
 }
 
+/* Dark mode daily quote text */
 .dark-mode #dailyQuote{
-  color: #eaeaea;
+  color:#eaeaea;
 }
 
+/* Dark mode widget heading */
 .dark-mode .daily-widget h3{
-  color: #ffffff;
+  color:#ffffff;
 }
 
+/* Dark mode borders for history and favorites */
 .dark-mode .history p,
 .dark-mode .favorite-card{
   border-color:#444;
 }
 
+/* Clear favorites button */
 #clear-favorites{
   background:#ff4d4d;
 }
 
+/* Hover effect for clear favorites button */
 #clear-favorites:hover{
   background:#e60000;
 }
