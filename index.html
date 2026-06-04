@@ -1,22 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Character encoding -->
   <meta charset="UTF-8">
+
+  <!-- Responsive viewport settings -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Page title shown in browser tab -->
   <title>Quote Generator</title>
+
+  <!-- External stylesheet -->
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
+<!-- Main application container -->
 <div class="container">
 
+  <!-- Application heading -->
   <h1>✨ Quote Generator</h1>
 
+  <!-- Quote of the Day section -->
   <div class="daily-widget">
     <h3>🌟 Quote of the Day</h3>
     <p id="dailyQuote"></p>
   </div>
 
+  <!-- Category filter dropdown -->
   <select id="category">
     <option value="all">All Categories</option>
     <option value="Motivation">Motivation</option>
@@ -24,75 +35,120 @@
     <option value="Life">Life</option>
   </select>
 
+  <!-- Main quote display area -->
   <div class="quote-box fade" id="quoteBox">
+
+    <!-- Quote text -->
     <div class="quote" id="quote"></div>
+
+    <!-- Quote author -->
     <div class="author" id="author"></div>
   </div>
 
+  <!-- Quote rating section -->
   <div class="rating">
     <h3>⭐ Rate This Quote</h3>
+
+    <!-- Rating buttons (1–5 stars) -->
     <button onclick="rateQuote(1)">⭐</button>
     <button onclick="rateQuote(2)">⭐⭐</button>
     <button onclick="rateQuote(3)">⭐⭐⭐</button>
     <button onclick="rateQuote(4)">⭐⭐⭐⭐</button>
     <button onclick="rateQuote(5)">⭐⭐⭐⭐⭐</button>
+
+    <!-- Displays selected rating -->
     <p id="ratingDisplay"></p>
   </div>
 
+  <!-- Action buttons -->
   <div class="buttons">
+
+    <!-- Generate a new random quote -->
     <button id="new-quote">🎲 New Quote</button>
+
+    <!-- Copy current quote to clipboard -->
     <button id="copy-quote">📋 Copy</button>
+
+    <!-- Save quote to favourites -->
     <button id="favorite-quote">❤️ Favourite</button>
+
+    <!-- Read quote aloud using speech synthesis -->
     <button id="voice-quote">🔊 Read</button>
+
+    <!-- Change page background -->
     <button id="background-btn">🎨 Background</button>
+
+    <!-- Toggle dark/light mode -->
     <button id="dark-mode">🌙 Dark Mode</button>
+
+    <!-- Clear quote viewing history -->
     <button id="clear-history">🗑 Clear History</button>
+
+    <!-- Clear all favourite quotes -->
     <button id="clear-favorites">🧹 Clear Favourites</button>
   </div>
 
+  <!-- Quote generation counter -->
   <div class="counter">
     Quotes Generated:
     <span id="count">0</span>
   </div>
 
+  <!-- Statistics section -->
   <div class="stats">
     <h3>📊 Statistics</h3>
 
+    <!-- Total number of quotes viewed -->
     <p>Total Quotes Viewed:
       <span id="totalViewed">0</span>
     </p>
 
+    <!-- Number of favourite quotes -->
     <p>Favourite Quotes:
       <span id="favoriteCount">0</span>
     </p>
 
+    <!-- Most viewed quote category -->
     <p>Most Viewed Category:
       <span id="mostViewed">None</span>
     </p>
   </div>
 
+  <!-- User progress tracker -->
   <div class="progress-section">
     <h3>🏆 Progress</h3>
+
+    <!-- Progress bar for quote viewing milestone -->
     <progress id="quoteProgress" max="100" value="0"></progress>
+
+    <!-- Progress text -->
     <p id="progressText">0 / 100 Quotes</p>
   </div>
 
+  <!-- Achievement notification area -->
   <div class="achievement">
     <span id="achievementText"></span>
   </div>
 
+  <!-- Quote history section -->
   <div class="history">
     <h3>📜 Quote History</h3>
+
+    <!-- Previously viewed quotes -->
     <div id="historyList"></div>
   </div>
 
+  <!-- Favourite quotes section -->
   <div class="favorites">
     <h3>❤️ Favourite Quotes</h3>
+
+    <!-- Saved favourite quotes -->
     <div id="favoriteList"></div>
   </div>
 
 </div>
 
+<!-- External JavaScript file -->
 <script src="assets/js/script.js"></script>
 
 </body>
